@@ -1,0 +1,15 @@
+{
+  "extends": "@workspace/typescript-config/react-library.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "outDir": "dist",
+    "rootDir": "src",
+    "paths": {
+      "@workspace/db/*": ["./dist/*"]
+    }
+  },
+  "include": ["src", "*.ts"],
+  "exclude": ["node_modules", "dist", "drizzle.config.ts"]
+}

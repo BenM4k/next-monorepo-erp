@@ -1,0 +1,37 @@
+{
+  "name": "@workspace/auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "generate:auth": "npx @better-auth/cli generate --config ./src/auth.ts --output ../db/src/schemas/auth-schema.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-auth": "^1.5.5",
+    "dotenv": "^17.3.1",
+    "pg": "^8.20.0",
+    "@workspace/db": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "latest",
+    "@workspace/eslint-config": "workspace:^",
+    "@workspace/typescript-config": "workspace:*"
+  },
+  "peerDependencies": {},
+  "exports": {
+    "./server": {
+      "types": "./dist/auth.d.ts",
+      "default": "./dist/auth.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./dist/client.js"
+    }
+  }
+}
