@@ -1,6 +1,9 @@
 import { betterAuth } from "better-auth"
 import { drizzleAdapter } from "better-auth/adapters/drizzle"
 import { db, drizzleSchema } from "@workspace/db/drizzle"
+import { nextCookies } from "better-auth/next-js"
+import { admin, organization } from "better-auth/plugins"
+import { ac, adminRole, superAdminRole, userRole } from "./permissions"
 
 // const isProduction = process.env.NODE_ENV === "production"
 const webApp = process.env.WEB_APPLICATION
@@ -14,6 +17,19 @@ export const auth = betterAuth({
     enabled: true,
   },
   trustedOrigins: [].filter((url) => Boolean(url)),
+  plugins: [
+    nextCookies(),
+    admin({
+      ac,
+      roles: {
+        admin: adminRole,
+        user: userRole,
+        superAdmin: superAdminRole,
+      },
+      defaultRole: "user",
+    }),
+    organization(),
+  ],
   socialProviders: {
     google: {
       clientId: "clientID",

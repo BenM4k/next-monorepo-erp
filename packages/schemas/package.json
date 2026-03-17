@@ -1,0 +1,22 @@
+{
+  "name": "@workspace/schemas",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@workspace/eslint-config": "workspace:^",
+    "@workspace/typescript-config": "workspace:*",
+    "zod": "^3.25.76"
+  },
+  "peerDependencies": {
+    "zod": "^3.25.76"
+  },
+  "exports": {
+    "/schemas": {
+      "default": "./dist/index.ts",
+      "types": "./dist/index.d.ts"
+    }
+  }
+}
